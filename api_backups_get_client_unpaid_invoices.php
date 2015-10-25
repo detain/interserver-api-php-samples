@@ -1,3 +1,4 @@
+<?php
 /** 
 *   api_backups_get_client_unpaid_invoices  -  (c)2015 detain@interserver.net InterServer Hosting
 *
@@ -56,3 +57,4 @@ try {
 	echo "Code:{$ex->faultcode}\n";
 	echo "String:{$ex->faultstring}\n";
 }; 
+?>

@@ -1,3 +1,4 @@
+<?php
 /** 
 *   api_get_prepay_paypal_fill_url  -  (c)2015 detain@interserver.net InterServer Hosting
 *
@@ -61,3 +62,4 @@ try {
 	echo "Code:{$ex->faultcode}\n";
 	echo "String:{$ex->faultstring}\n";
 }; 
+?>

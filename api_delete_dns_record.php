@@ -1,3 +1,4 @@
+<?php
 /** 
 *   api_delete_dns_record  -  (c)2015 detain@interserver.net InterServer Hosting
 *
@@ -58,3 +59,4 @@ try {
 	echo "Code:{$ex->faultcode}\n";
 	echo "String:{$ex->faultstring}\n";
 }; 
+?>

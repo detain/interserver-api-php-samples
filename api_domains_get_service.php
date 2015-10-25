@@ -1,3 +1,4 @@
+<?php
 /** 
 *   api_domains_get_service  -  (c)2015 detain@interserver.net InterServer Hosting
 *
@@ -59,3 +60,4 @@ try {
 	echo "Code:{$ex->faultcode}\n";
 	echo "String:{$ex->faultstring}\n";
 }; 
+?>
