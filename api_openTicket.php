@@ -5,11 +5,11 @@
 * This command creates a new ticket in our system.  
 *
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
-* @param user_email string 
-* @param user_ip string 
-* @param subject string 
+* @param user_email string client email address
+* @param user_ip string client ip address
+* @param subject string subject of the ticket
 * @param product string 
-* @param body string 
+* @param body string full content/description for the ticket
 * @param box_auth_value string 
 */
 ini_set("soap.wsdl_cache_enabled", "0");

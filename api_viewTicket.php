@@ -5,7 +5,7 @@
 * View/Retrieve information about the given ticketID.
 *
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
-* @param ticketID string 
+* @param ticketID string the id of the ticket to retrieve. you can use [api_getTicketList](#api_getTicketList) to get a list of your tickets
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $fields = array();

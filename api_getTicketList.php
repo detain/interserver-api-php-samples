@@ -5,9 +5,9 @@
 * Returns a list of any tickets in the system.
 *
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
-* @param page int 
-* @param limit int 
-* @param status string 
+* @param page int page number of tickets to list
+* @param limit int how many tickets to show per page
+* @param status string null for no status limi t or limit to a speicifc status
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $fields = array();

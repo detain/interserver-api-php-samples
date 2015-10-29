@@ -6,7 +6,7 @@
 *
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
 * @param ip string IP Address to cancel
-* @param type int Package ID
+* @param type int Package ID. use [api_get_license_types](#api_get_license_types) to get a list of possible types.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $fields = array();
