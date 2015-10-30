@@ -18,6 +18,7 @@ $fields = array();
 $cmdfields = array();
 $values = array();
 $show_help = false;
+$fields = array('sid', 'domain_id', 'record_id', 'name', 'content', 'type', 'ttl', 'prio');
 $cmdfields[] = 'username';
 $cmdfields[] = 'password';
 $cmdfields[] = 'domain_id';
@@ -27,6 +28,16 @@ $cmdfields[] = 'content';
 $cmdfields[] = 'type';
 $cmdfields[] = 'ttl';
 $cmdfields[] = 'prio';
+$cmdfields = array('
+Warning: implode(): Invalid arguments passed in /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php on line 54
+
+Call Stack:
+    0.0011     339968   1. {main}() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:0
+    7.7703   21645240   2. Smarty->fetch() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:435
+    7.7707   21707312   3. include('/home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php') /home/detain/myadmin/cpaneldirect/trunk/vendor/Smarty2/libs/Smarty.class.php:1264
+    7.7710   21707536   4. implode() /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php:54
+
+');
 for ($x = 1; $x < $_SERVER['argc']; $x++) 
 
 	if (in_array($_SERVER['argv'][$x], array('--help', '-h', 'help')))
