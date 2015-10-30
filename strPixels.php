@@ -33,12 +33,13 @@ Correct Syntax: {$_SERVER["argv"][0]}  <string>
 
 EOF
 ); 
- 
 $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
-try { 
-  $response = $client->strPixels($string);
-  echo '$response = '.var_export($response, true)."\n";
+try  { 
+  $res = $client->strPixels($string);
+  echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
+  echo "Exception Occured!\n";
+  echo "Code:{$ex->faultcode}\n";
+  echo "String:{$ex->faultstring}\n";
 }; 
 ?>

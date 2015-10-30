@@ -33,15 +33,16 @@ Correct Syntax: {$_SERVER["argv"][0]}  <username> <password> <ip> <type>
 
 EOF
 ); 
- 
 $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
-try { 
+try  { 
   $sid = $client->api_login($username, $password);
   if (strlen($sid) == 0)
     die("Got A Blank Sessoion");
-  $response = $client->api_cancel_license_ip($sid, $ip, $type);
-  echo '$response = '.var_export($response, true)."\n";
+  $res = $client->api_cancel_license_ip($sid, $ip, $type);
+  echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
+  echo "Exception Occured!\n";
+  echo "Code:{$ex->faultcode}\n";
+  echo "String:{$ex->faultstring}\n";
 }; 
 ?>

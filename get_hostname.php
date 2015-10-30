@@ -25,12 +25,13 @@ Correct Syntax: {$_SERVER["argv"][0]}  <ip>
 
 EOF
 ); 
- 
 $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
-try { 
-  $response = $client->get_hostname($ip);
-  echo '$response = '.var_export($response, true)."\n";
+try  { 
+  $res = $client->get_hostname($ip);
+  echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
+  echo "Exception Occured!\n";
+  echo "Code:{$ex->faultcode}\n";
+  echo "String:{$ex->faultstring}\n";
 }; 
 ?>
