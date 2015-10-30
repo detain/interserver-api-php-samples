@@ -4,8 +4,8 @@
 *
 * Get the PayPal payment URL for an invoice on a given module.
 *
-* @param module string 
-* @param invoice int 
+* @param module string the module the invoice is for. use [get_modules](#get_modules) to get a list of modules
+* @param invoice int the invoice id, or a comma seperated list of invoice ids to get a payment url for.  
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $fields = array();
