@@ -10,11 +10,11 @@
 * @param automatic_use bool wether or not the prepay will get used automatically by billing system.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$module = $_SERVER['argv'][2];
-$amount = $_SERVER['argv'][3];
-$automatic_use = $_SERVER['argv'][4];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$module = $_SERVER['argv'][3];
+$amount = $_SERVER['argv'][4];
+$automatic_use = $_SERVER['argv'][5];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

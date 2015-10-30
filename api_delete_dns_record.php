@@ -6,10 +6,10 @@
 * @param record_id int The ID of the domains record to remove.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$domain_id = $_SERVER['argv'][2];
-$record_id = $_SERVER['argv'][3];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$domain_id = $_SERVER['argv'][3];
+$record_id = $_SERVER['argv'][4];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

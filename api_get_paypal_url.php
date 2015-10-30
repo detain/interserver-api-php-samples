@@ -5,8 +5,8 @@
 * @param invoice int the invoice id, or a comma seperated list of invoice ids to get a payment url for.  
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$module = $_SERVER['argv'][0];
-$invoice = $_SERVER['argv'][1];
+$module = $_SERVER['argv'][1];
+$invoice = $_SERVER['argv'][2];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

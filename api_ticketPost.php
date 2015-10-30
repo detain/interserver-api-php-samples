@@ -7,10 +7,10 @@
 * @param content string the message to add to the ticket
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$ticketID = $_SERVER['argv'][2];
-$content = $_SERVER['argv'][3];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$ticketID = $_SERVER['argv'][3];
+$content = $_SERVER['argv'][4];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

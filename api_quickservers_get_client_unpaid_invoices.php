@@ -6,8 +6,8 @@
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

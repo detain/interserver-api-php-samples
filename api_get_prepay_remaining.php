@@ -4,7 +4,7 @@
 * @param module string the module you want to check your prepay amounts on
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$module = $_SERVER['argv'][0];
+$module = $_SERVER['argv'][1];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

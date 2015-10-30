@@ -17,19 +17,19 @@
 * @param server int 0 for auto assign otherwise the id of the vps master to put this on
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$os = $_SERVER['argv'][2];
-$slices = $_SERVER['argv'][3];
-$platform = $_SERVER['argv'][4];
-$controlpanel = $_SERVER['argv'][5];
-$period = $_SERVER['argv'][6];
-$location = $_SERVER['argv'][7];
-$version = $_SERVER['argv'][8];
-$hostname = $_SERVER['argv'][9];
-$coupon = $_SERVER['argv'][10];
-$rootpass = $_SERVER['argv'][11];
-$server = $_SERVER['argv'][12];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$os = $_SERVER['argv'][3];
+$slices = $_SERVER['argv'][4];
+$platform = $_SERVER['argv'][5];
+$controlpanel = $_SERVER['argv'][6];
+$period = $_SERVER['argv'][7];
+$location = $_SERVER['argv'][8];
+$version = $_SERVER['argv'][9];
+$hostname = $_SERVER['argv'][10];
+$coupon = $_SERVER['argv'][11];
+$rootpass = $_SERVER['argv'][12];
+$server = $_SERVER['argv'][13];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

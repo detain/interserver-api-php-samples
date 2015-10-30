@@ -6,10 +6,10 @@
 * @param invoice int the invoice id you want to make a payment on
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$module = $_SERVER['argv'][2];
-$invoice = $_SERVER['argv'][3];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$module = $_SERVER['argv'][3];
+$invoice = $_SERVER['argv'][4];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

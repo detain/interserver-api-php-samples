@@ -6,8 +6,8 @@
 * @param password string the password you use to login to the web account, or alternatively the API key.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

@@ -6,10 +6,10 @@
 * @param newip string the new ip address to associate with the license
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$id = $_SERVER['argv'][2];
-$newip = $_SERVER['argv'][3];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$id = $_SERVER['argv'][3];
+$newip = $_SERVER['argv'][4];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

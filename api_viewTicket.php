@@ -5,9 +5,9 @@
 * @param ticketID string the id of the ticket to retrieve. you can use [api_getTicketList](#api_getTicketList) to get a list of your tickets
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$ticketID = $_SERVER['argv'][2];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$ticketID = $_SERVER['argv'][3];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

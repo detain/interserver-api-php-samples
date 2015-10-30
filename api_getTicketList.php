@@ -7,11 +7,11 @@
 * @param status string null for no status limi t or limit to a speicifc status
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$page = $_SERVER['argv'][2];
-$limit = $_SERVER['argv'][3];
-$status = $_SERVER['argv'][4];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$page = $_SERVER['argv'][3];
+$limit = $_SERVER['argv'][4];
+$status = $_SERVER['argv'][5];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

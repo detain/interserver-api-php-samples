@@ -10,14 +10,14 @@
 * @param box_auth_value string encryption string?
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$user_email = $_SERVER['argv'][2];
-$user_ip = $_SERVER['argv'][3];
-$subject = $_SERVER['argv'][4];
-$product = $_SERVER['argv'][5];
-$body = $_SERVER['argv'][6];
-$box_auth_value = $_SERVER['argv'][7];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$user_email = $_SERVER['argv'][3];
+$user_ip = $_SERVER['argv'][4];
+$subject = $_SERVER['argv'][5];
+$product = $_SERVER['argv'][6];
+$body = $_SERVER['argv'][7];
+$box_auth_value = $_SERVER['argv'][8];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

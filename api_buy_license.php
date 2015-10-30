@@ -7,11 +7,11 @@
 * @param coupon string an optional coupon
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$ip = $_SERVER['argv'][2];
-$type = $_SERVER['argv'][3];
-$coupon = $_SERVER['argv'][4];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$ip = $_SERVER['argv'][3];
+$type = $_SERVER['argv'][4];
+$coupon = $_SERVER['argv'][5];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

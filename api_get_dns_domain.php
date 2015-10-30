@@ -5,9 +5,9 @@
 * @param domain_id int The ID of the domain in question.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$domain_id = $_SERVER['argv'][2];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$domain_id = $_SERVER['argv'][3];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

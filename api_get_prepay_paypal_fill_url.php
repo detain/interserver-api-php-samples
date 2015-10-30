@@ -7,11 +7,11 @@
 * @param amount float the amount to pay on the prepay.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$username = $_SERVER['argv'][0];
-$password = $_SERVER['argv'][1];
-$module = $_SERVER['argv'][2];
-$prepay_id = $_SERVER['argv'][3];
-$amount = $_SERVER['argv'][4];
+$username = $_SERVER['argv'][1];
+$password = $_SERVER['argv'][2];
+$module = $_SERVER['argv'][3];
+$prepay_id = $_SERVER['argv'][4];
+$amount = $_SERVER['argv'][5];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
