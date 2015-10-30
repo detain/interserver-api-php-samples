@@ -1,45 +1,25 @@
 <?php
-/** 
-*   api_viewTicket  -  (c)2015 detain@interserver.net InterServer Hosting
-*
+/** api_viewTicket  -  (c)2015 detain@interserver.net InterServer Hosting
 * View/Retrieve information about the given ticketID.
-*
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
 * @param ticketID string the id of the ticket to retrieve. you can use [api_getTicketList](#api_getTicketList) to get a list of your tickets
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$fields = array();
-$cmdfields = array();
-$values = array();
+$values['username'] = $_SERVER['argv'][0];
+$values['password'] = $_SERVER['argv'][1];
+$values['ticketID'] = $_SERVER['argv'][2];
 $show_help = false;
-$fields = array('sid', 'ticketID');
-$cmdfields[] = 'username';
-$cmdfields[] = 'password';
-$cmdfields[] = 'ticketID';
-$cmdfields = array('
-Warning: implode(): Invalid arguments passed in /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php on line 58
 
-Call Stack:
-    0.0012     339968   1. {main}() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:0
-    3.3898   21502504   2. Smarty->fetch() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:435
-    3.3903   21569200   3. include('/home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php') /home/detain/myadmin/cpaneldirect/trunk/vendor/Smarty2/libs/Smarty.class.php:1264
-    3.3904   21569424   4. implode() /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php:58
+if (in_array('--help', $_SERVER['argv']))
+{
+	$show_help = true;
+	break;
+}
 
-');
-for ($x = 1; $x < $_SERVER['argc']; $x++) 
-
-	if (in_array($_SERVER['argv'][$x], array('--help', '-h', 'help')))
-	{
-		$show_help = true;
-		break;
-	}
-	else
-		$values[$fields[$x - 1]] = $_SERVER['argv'][$x]; 
-
-	if ($_SERVER['argc'] < 4)
-		$show_help = true;
-	if ($show_help == true)
-		exit(<<<EOF
+if ($_SERVER['argc'] < 4)
+	$show_help = true;
+if ($show_help == true)
+	exit(<<<EOF
 api_viewTicket
 
 View/Retrieve information about the given ticketID.
@@ -58,8 +38,7 @@ try {
 	$sid = $client->api_login($values['username'], $values['password']);
 	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
 	echo "Got Session ID $sid\n";
-	$values['sid'] = $sid;
-	$response = $client->api_viewTicket($values['sid'], $values['ticketID']);
+	$response = $client->api_viewTicket($sid, $ticketID);
 	print_r($response);
 	echo "Success\n";
  } catch (Exception $ex) {

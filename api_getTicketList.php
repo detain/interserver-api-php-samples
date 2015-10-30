@@ -1,49 +1,29 @@
 <?php
-/** 
-*   api_getTicketList  -  (c)2015 detain@interserver.net InterServer Hosting
-*
+/** api_getTicketList  -  (c)2015 detain@interserver.net InterServer Hosting
 * Returns a list of any tickets in the system.
-*
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
 * @param page int page number of tickets to list
 * @param limit int how many tickets to show per page
 * @param status string null for no status limi t or limit to a speicifc status
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$fields = array();
-$cmdfields = array();
-$values = array();
+$values['username'] = $_SERVER['argv'][0];
+$values['password'] = $_SERVER['argv'][1];
+$values['page'] = $_SERVER['argv'][2];
+$values['limit'] = $_SERVER['argv'][3];
+$values['status'] = $_SERVER['argv'][4];
 $show_help = false;
-$fields = array('sid', 'page', 'limit', 'status');
-$cmdfields[] = 'username';
-$cmdfields[] = 'password';
-$cmdfields[] = 'page';
-$cmdfields[] = 'limit';
-$cmdfields[] = 'status';
-$cmdfields = array('
-Warning: implode(): Invalid arguments passed in /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php on line 58
 
-Call Stack:
-    0.0012     339968   1. {main}() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:0
-    3.3627   21495688   2. Smarty->fetch() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:435
-    3.3631   21562376   3. include('/home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php') /home/detain/myadmin/cpaneldirect/trunk/vendor/Smarty2/libs/Smarty.class.php:1264
-    3.3634   21562600   4. implode() /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php:58
+if (in_array('--help', $_SERVER['argv']))
+{
+	$show_help = true;
+	break;
+}
 
-');
-for ($x = 1; $x < $_SERVER['argc']; $x++) 
-
-	if (in_array($_SERVER['argv'][$x], array('--help', '-h', 'help')))
-	{
-		$show_help = true;
-		break;
-	}
-	else
-		$values[$fields[$x - 1]] = $_SERVER['argv'][$x]; 
-
-	if ($_SERVER['argc'] < 6)
-		$show_help = true;
-	if ($show_help == true)
-		exit(<<<EOF
+if ($_SERVER['argc'] < 6)
+	$show_help = true;
+if ($show_help == true)
+	exit(<<<EOF
 api_getTicketList
 
 Returns a list of any tickets in the system.
@@ -64,8 +44,7 @@ try {
 	$sid = $client->api_login($values['username'], $values['password']);
 	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
 	echo "Got Session ID $sid\n";
-	$values['sid'] = $sid;
-	$response = $client->api_getTicketList($values['sid'], $values['page'], $values['limit'], $values['status']);
+	$response = $client->api_getTicketList($sid, $page, $limit, $status);
 	print_r($response);
 	echo "Success\n";
  } catch (Exception $ex) {

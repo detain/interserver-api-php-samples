@@ -1,9 +1,6 @@
 <?php
-/** 
-*   api_add_dns_record  -  (c)2015 detain@interserver.net InterServer Hosting
-*
+/** api_add_dns_record  -  (c)2015 detain@interserver.net InterServer Hosting
 * Adds a single DNS record
-*
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
 * @param domain_id int The ID of the domain in question.
 * @param name string the hostname being set on the dns record.
@@ -13,43 +10,26 @@
 * @param prio int dns record priority
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$fields = array();
-$cmdfields = array();
-$values = array();
+$values['username'] = $_SERVER['argv'][0];
+$values['password'] = $_SERVER['argv'][1];
+$values['domain_id'] = $_SERVER['argv'][2];
+$values['name'] = $_SERVER['argv'][3];
+$values['content'] = $_SERVER['argv'][4];
+$values['type'] = $_SERVER['argv'][5];
+$values['ttl'] = $_SERVER['argv'][6];
+$values['prio'] = $_SERVER['argv'][7];
 $show_help = false;
-$fields = array('sid', 'domain_id', 'name', 'content', 'type', 'ttl', 'prio');
-$cmdfields[] = 'username';
-$cmdfields[] = 'password';
-$cmdfields[] = 'domain_id';
-$cmdfields[] = 'name';
-$cmdfields[] = 'content';
-$cmdfields[] = 'type';
-$cmdfields[] = 'ttl';
-$cmdfields[] = 'prio';
-$cmdfields = array('
-Warning: implode(): Invalid arguments passed in /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php on line 58
 
-Call Stack:
-    0.0012     339968   1. {main}() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:0
-    7.7147   21643312   2. Smarty->fetch() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:435
-    7.7151   21710000   3. include('/home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php') /home/detain/myadmin/cpaneldirect/trunk/vendor/Smarty2/libs/Smarty.class.php:1264
-    7.7154   21710224   4. implode() /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php:58
+if (in_array('--help', $_SERVER['argv']))
+{
+	$show_help = true;
+	break;
+}
 
-');
-for ($x = 1; $x < $_SERVER['argc']; $x++) 
-
-	if (in_array($_SERVER['argv'][$x], array('--help', '-h', 'help')))
-	{
-		$show_help = true;
-		break;
-	}
-	else
-		$values[$fields[$x - 1]] = $_SERVER['argv'][$x]; 
-
-	if ($_SERVER['argc'] < 9)
-		$show_help = true;
-	if ($show_help == true)
-		exit(<<<EOF
+if ($_SERVER['argc'] < 9)
+	$show_help = true;
+if ($show_help == true)
+	exit(<<<EOF
 api_add_dns_record
 
 Adds a single DNS record
@@ -73,8 +53,7 @@ try {
 	$sid = $client->api_login($values['username'], $values['password']);
 	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
 	echo "Got Session ID $sid\n";
-	$values['sid'] = $sid;
-	$response = $client->api_add_dns_record($values['sid'], $values['domain_id'], $values['name'], $values['content'], $values['type'], $values['ttl'], $values['prio']);
+	$response = $client->api_add_dns_record($sid, $domain_id, $name, $content, $type, $ttl, $prio);
 	print_r($response);
 	echo "Success\n";
  } catch (Exception $ex) {

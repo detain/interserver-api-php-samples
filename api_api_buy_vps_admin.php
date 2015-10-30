@@ -1,11 +1,8 @@
 <?php
-/** 
-*   api_api_buy_vps_admin  -  (c)2015 detain@interserver.net InterServer Hosting
-*
+/** api_api_buy_vps_admin  -  (c)2015 detain@interserver.net InterServer Hosting
 * Purchase a VPS (admins only).   Returns a comma seperated list of invoices if
 * any need paid.  Same as client function but allows specifying which server to
 * install to if there are resources available on the specified server.
-*
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
 * @param os string file field from [get_vps_templates](#get_vps_templates)
 * @param slices int 1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)
@@ -20,48 +17,31 @@
 * @param server int 0 for auto assign otherwise the id of the vps master to put this on
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$fields = array();
-$cmdfields = array();
-$values = array();
+$values['username'] = $_SERVER['argv'][0];
+$values['password'] = $_SERVER['argv'][1];
+$values['os'] = $_SERVER['argv'][2];
+$values['slices'] = $_SERVER['argv'][3];
+$values['platform'] = $_SERVER['argv'][4];
+$values['controlpanel'] = $_SERVER['argv'][5];
+$values['period'] = $_SERVER['argv'][6];
+$values['location'] = $_SERVER['argv'][7];
+$values['version'] = $_SERVER['argv'][8];
+$values['hostname'] = $_SERVER['argv'][9];
+$values['coupon'] = $_SERVER['argv'][10];
+$values['rootpass'] = $_SERVER['argv'][11];
+$values['server'] = $_SERVER['argv'][12];
 $show_help = false;
-$fields = array('sid', 'os', 'slices', 'platform', 'controlpanel', 'period', 'location', 'version', 'hostname', 'coupon', 'rootpass', 'server');
-$cmdfields[] = 'username';
-$cmdfields[] = 'password';
-$cmdfields[] = 'os';
-$cmdfields[] = 'slices';
-$cmdfields[] = 'platform';
-$cmdfields[] = 'controlpanel';
-$cmdfields[] = 'period';
-$cmdfields[] = 'location';
-$cmdfields[] = 'version';
-$cmdfields[] = 'hostname';
-$cmdfields[] = 'coupon';
-$cmdfields[] = 'rootpass';
-$cmdfields[] = 'server';
-$cmdfields = array('
-Warning: implode(): Invalid arguments passed in /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php on line 58
 
-Call Stack:
-    0.0012     339968   1. {main}() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:0
-    7.5348   21615440   2. Smarty->fetch() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:435
-    7.5352   21682128   3. include('/home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php') /home/detain/myadmin/cpaneldirect/trunk/vendor/Smarty2/libs/Smarty.class.php:1264
-    7.5357   21682352   4. implode() /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php:58
+if (in_array('--help', $_SERVER['argv']))
+{
+	$show_help = true;
+	break;
+}
 
-');
-for ($x = 1; $x < $_SERVER['argc']; $x++) 
-
-	if (in_array($_SERVER['argv'][$x], array('--help', '-h', 'help')))
-	{
-		$show_help = true;
-		break;
-	}
-	else
-		$values[$fields[$x - 1]] = $_SERVER['argv'][$x]; 
-
-	if ($_SERVER['argc'] < 14)
-		$show_help = true;
-	if ($show_help == true)
-		exit(<<<EOF
+if ($_SERVER['argc'] < 14)
+	$show_help = true;
+if ($show_help == true)
+	exit(<<<EOF
 api_api_buy_vps_admin
 
 Purchase a VPS (admins only).   Returns a comma seperated list of invoices if
@@ -92,8 +72,7 @@ try {
 	$sid = $client->api_login($values['username'], $values['password']);
 	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
 	echo "Got Session ID $sid\n";
-	$values['sid'] = $sid;
-	$response = $client->api_api_buy_vps_admin($values['sid'], $values['os'], $values['slices'], $values['platform'], $values['controlpanel'], $values['period'], $values['location'], $values['version'], $values['hostname'], $values['coupon'], $values['rootpass'], $values['server']);
+	$response = $client->api_api_buy_vps_admin($sid, $os, $slices, $platform, $controlpanel, $period, $location, $version, $hostname, $coupon, $rootpass, $server);
 	print_r($response);
 	echo "Success\n";
  } catch (Exception $ex) {

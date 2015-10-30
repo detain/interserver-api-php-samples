@@ -1,46 +1,26 @@
 <?php
-/** 
-*   strPixels  -  (c)2015 detain@interserver.net InterServer Hosting
-*
+/** strPixels  -  (c)2015 detain@interserver.net InterServer Hosting
 * This function uses the array below to calculate the pixel width of a string of
 * characters. The widths of each character are based on a 12px Helvetica font. 
 * Kerning is not taken into account so RESULTS ARE APPROXIMATE.  The purpose is to
 * return a relative size to help in formatting. For example, strPixels('I like
 * cake') == 54    strPixels('I LIKE CAKE') == 67
-*
 * @param string string characters to measure size
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$fields = array();
-$cmdfields = array();
-$values = array();
+$values['string'] = $_SERVER['argv'][0];
 $show_help = false;
-$fields = array('string');
-$cmdfields[] = 'string';
-$cmdfields = array('
-Warning: implode(): Invalid arguments passed in /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php on line 58
 
-Call Stack:
-    0.0012     339968   1. {main}() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:0
-    7.7569   21649336   2. Smarty->fetch() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:435
-    7.7575   21716024   3. include('/home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php') /home/detain/myadmin/cpaneldirect/trunk/vendor/Smarty2/libs/Smarty.class.php:1264
-    7.7577   21716248   4. implode() /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php:58
+if (in_array('--help', $_SERVER['argv']))
+{
+	$show_help = true;
+	break;
+}
 
-');
-for ($x = 1; $x < $_SERVER['argc']; $x++) 
-
-	if (in_array($_SERVER['argv'][$x], array('--help', '-h', 'help')))
-	{
-		$show_help = true;
-		break;
-	}
-	else
-		$values[$fields[$x - 1]] = $_SERVER['argv'][$x]; 
-
-	if ($_SERVER['argc'] < 2)
-		$show_help = true;
-	if ($show_help == true)
-		exit(<<<EOF
+if ($_SERVER['argc'] < 2)
+	$show_help = true;
+if ($show_help == true)
+	exit(<<<EOF
 strPixels
 
 This function uses the array below to calculate the pixel width of a string of
@@ -58,7 +38,7 @@ EOF
 
 try {
 	$client = new SoapClient("https://my.interserver.net/api.php?wsdl"); 
-	$response = $client->strPixels($values['string']);
+	$response = $client->strPixels($string);
 	print_r($response);
 	echo "Success\n";
  } catch (Exception $ex) {

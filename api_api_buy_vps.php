@@ -1,11 +1,8 @@
 <?php
-/** 
-*   api_api_buy_vps  -  (c)2015 detain@interserver.net InterServer Hosting
-*
+/** api_api_buy_vps  -  (c)2015 detain@interserver.net InterServer Hosting
 * Places a VPS order in our system. These are the same parameters as
 * api_validate_buy_vps..   Returns a comma seperated list of invoices if any need
 * paid.
-*
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
 * @param os string file field from [get_vps_templates](#get_vps_templates)
 * @param slices int 1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)
@@ -19,47 +16,30 @@
 * @param rootpass string Desired Root Password (unused for windows, send a blank string)
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$fields = array();
-$cmdfields = array();
-$values = array();
+$values['username'] = $_SERVER['argv'][0];
+$values['password'] = $_SERVER['argv'][1];
+$values['os'] = $_SERVER['argv'][2];
+$values['slices'] = $_SERVER['argv'][3];
+$values['platform'] = $_SERVER['argv'][4];
+$values['controlpanel'] = $_SERVER['argv'][5];
+$values['period'] = $_SERVER['argv'][6];
+$values['location'] = $_SERVER['argv'][7];
+$values['version'] = $_SERVER['argv'][8];
+$values['hostname'] = $_SERVER['argv'][9];
+$values['coupon'] = $_SERVER['argv'][10];
+$values['rootpass'] = $_SERVER['argv'][11];
 $show_help = false;
-$fields = array('sid', 'os', 'slices', 'platform', 'controlpanel', 'period', 'location', 'version', 'hostname', 'coupon', 'rootpass');
-$cmdfields[] = 'username';
-$cmdfields[] = 'password';
-$cmdfields[] = 'os';
-$cmdfields[] = 'slices';
-$cmdfields[] = 'platform';
-$cmdfields[] = 'controlpanel';
-$cmdfields[] = 'period';
-$cmdfields[] = 'location';
-$cmdfields[] = 'version';
-$cmdfields[] = 'hostname';
-$cmdfields[] = 'coupon';
-$cmdfields[] = 'rootpass';
-$cmdfields = array('
-Warning: implode(): Invalid arguments passed in /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php on line 58
 
-Call Stack:
-    0.0012     339968   1. {main}() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:0
-    7.5305   21609152   2. Smarty->fetch() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:435
-    7.5309   21675840   3. include('/home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php') /home/detain/myadmin/cpaneldirect/trunk/vendor/Smarty2/libs/Smarty.class.php:1264
-    7.5313   21676064   4. implode() /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php:58
+if (in_array('--help', $_SERVER['argv']))
+{
+	$show_help = true;
+	break;
+}
 
-');
-for ($x = 1; $x < $_SERVER['argc']; $x++) 
-
-	if (in_array($_SERVER['argv'][$x], array('--help', '-h', 'help')))
-	{
-		$show_help = true;
-		break;
-	}
-	else
-		$values[$fields[$x - 1]] = $_SERVER['argv'][$x]; 
-
-	if ($_SERVER['argc'] < 13)
-		$show_help = true;
-	if ($show_help == true)
-		exit(<<<EOF
+if ($_SERVER['argc'] < 13)
+	$show_help = true;
+if ($show_help == true)
+	exit(<<<EOF
 api_api_buy_vps
 
 Places a VPS order in our system. These are the same parameters as
@@ -89,8 +69,7 @@ try {
 	$sid = $client->api_login($values['username'], $values['password']);
 	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
 	echo "Got Session ID $sid\n";
-	$values['sid'] = $sid;
-	$response = $client->api_api_buy_vps($values['sid'], $values['os'], $values['slices'], $values['platform'], $values['controlpanel'], $values['period'], $values['location'], $values['version'], $values['hostname'], $values['coupon'], $values['rootpass']);
+	$response = $client->api_api_buy_vps($sid, $os, $slices, $platform, $controlpanel, $period, $location, $version, $hostname, $coupon, $rootpass);
 	print_r($response);
 	echo "Success\n";
  } catch (Exception $ex) {

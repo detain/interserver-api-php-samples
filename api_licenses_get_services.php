@@ -1,44 +1,24 @@
 <?php
-/** 
-*   api_licenses_get_services  -  (c)2015 detain@interserver.net InterServer Hosting
-*
+/** api_licenses_get_services  -  (c)2015 detain@interserver.net InterServer Hosting
 * This Function Applies to the Licensing services.
 * Gets List of Services
-*
 * @param sid string the *Session ID* you get from the [api_login](#api_login) call
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$fields = array();
-$cmdfields = array();
-$values = array();
+$values['username'] = $_SERVER['argv'][0];
+$values['password'] = $_SERVER['argv'][1];
 $show_help = false;
-$fields = array('sid');
-$cmdfields[] = 'username';
-$cmdfields[] = 'password';
-$cmdfields = array('
-Warning: implode(): Invalid arguments passed in /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php on line 58
 
-Call Stack:
-    0.0012     339968   1. {main}() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:0
-    3.5545   21454160   2. Smarty->fetch() /home/detain/myadmin/cpaneldirect/trunk/scripts/api/map_api_to_samples.php:435
-    3.5552   21520856   3. include('/home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php') /home/detain/myadmin/cpaneldirect/trunk/vendor/Smarty2/libs/Smarty.class.php:1264
-    3.5554   21521080   4. implode() /home/detain/myadmin/cpaneldirect/trunk/include/rendering/smarty_templates_c/%%CE^CED^CEDF5139%%api_generator_php.tpl.php:58
+if (in_array('--help', $_SERVER['argv']))
+{
+	$show_help = true;
+	break;
+}
 
-');
-for ($x = 1; $x < $_SERVER['argc']; $x++) 
-
-	if (in_array($_SERVER['argv'][$x], array('--help', '-h', 'help')))
-	{
-		$show_help = true;
-		break;
-	}
-	else
-		$values[$fields[$x - 1]] = $_SERVER['argv'][$x]; 
-
-	if ($_SERVER['argc'] < 3)
-		$show_help = true;
-	if ($show_help == true)
-		exit(<<<EOF
+if ($_SERVER['argc'] < 3)
+	$show_help = true;
+if ($show_help == true)
+	exit(<<<EOF
 api_licenses_get_services
 
 This Function Applies to the Licensing services.
@@ -57,8 +37,7 @@ try {
 	$sid = $client->api_login($values['username'], $values['password']);
 	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
 	echo "Got Session ID $sid\n";
-	$values['sid'] = $sid;
-	$response = $client->api_licenses_get_services($values['sid']);
+	$response = $client->api_licenses_get_services($sid);
 	print_r($response);
 	echo "Success\n";
  } catch (Exception $ex) {
