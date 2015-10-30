@@ -6,20 +6,18 @@
 * @param password string the password you use to login to the web account, or alternatively the API key.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$values['username'] = $_SERVER['argv'][0];
-$values['password'] = $_SERVER['argv'][1];
-$show_help = false;
-
+$username = $_SERVER['argv'][0];
+$password = $_SERVER['argv'][1];
+$show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-	$show_help = true;
-	break;
-}
-
+  $show_help = true;
+  break;
+} 
 if ($_SERVER['argc'] < 3)
-	$show_help = true;
+  $show_help = true;
 if ($show_help == true)
-	exit(<<<EOF
+  exit(<<<EOF
 api_login
 
 This function creates a session in our system which you will need to pass to
@@ -27,20 +25,17 @@ This function creates a session in our system which you will need to pass to
 
 Correct Syntax: {$_SERVER["argv"][0]}  <username> <password>
 
-	<username>  Must be a string
-	<password>  Must be a string
+  <username>  Must be a string
+  <password>  Must be a string
 
 EOF
 ); 
-
-try {
-	$client = new SoapClient("https://my.interserver.net/api.php?wsdl"); 
-	$response = $client->api_login($username, $password);
-	print_r($response);
-	echo "Success\n";
+ 
+$client = new SoapClient("https://my.interserver.net/api.php?wsdl");
+try { 
+  $response = $client->api_login($username, $password);
+  echo '$response = '.var_export($response, true)."\n";
  } catch (Exception $ex) {
-	echo "Exception Occured!\n";
-	echo "Code:{$ex->faultcode}\n";
-	echo "String:{$ex->faultstring}\n";
+  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
 }; 
 ?>

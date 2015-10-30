@@ -4,18 +4,16 @@
 * field in the return value is also needed to pass to the buy_vps functions.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$show_help = false;
-
+$show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-	$show_help = true;
-	break;
-}
-
+  $show_help = true;
+  break;
+} 
 if ($_SERVER['argc'] < 1)
-	$show_help = true;
+  $show_help = true;
 if ($show_help == true)
-	exit(<<<EOF
+  exit(<<<EOF
 get_vps_locations_array
 
 Use this function to get a list of the Locations available for ordering. The id
@@ -26,15 +24,12 @@ Correct Syntax: {$_SERVER["argv"][0]}
 
 EOF
 ); 
-
-try {
-	$client = new SoapClient("https://my.interserver.net/api.php?wsdl"); 
-	$response = $client->get_vps_locations_array();
-	print_r($response);
-	echo "Success\n";
+ 
+$client = new SoapClient("https://my.interserver.net/api.php?wsdl");
+try { 
+  $response = $client->get_vps_locations_array();
+  echo '$response = '.var_export($response, true)."\n";
  } catch (Exception $ex) {
-	echo "Exception Occured!\n";
-	echo "Code:{$ex->faultcode}\n";
-	echo "String:{$ex->faultstring}\n";
+  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
 }; 
 ?>

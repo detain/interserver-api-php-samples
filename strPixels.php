@@ -8,19 +8,17 @@
 * @param string string characters to measure size
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$values['string'] = $_SERVER['argv'][0];
-$show_help = false;
-
+$string = $_SERVER['argv'][0];
+$show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-	$show_help = true;
-	break;
-}
-
+  $show_help = true;
+  break;
+} 
 if ($_SERVER['argc'] < 2)
-	$show_help = true;
+  $show_help = true;
 if ($show_help == true)
-	exit(<<<EOF
+  exit(<<<EOF
 strPixels
 
 This function uses the array below to calculate the pixel width of a string of
@@ -31,19 +29,16 @@ This function uses the array below to calculate the pixel width of a string of
 
 Correct Syntax: {$_SERVER["argv"][0]}  <string>
 
-	<string>  Must be a string
+  <string>  Must be a string
 
 EOF
 ); 
-
-try {
-	$client = new SoapClient("https://my.interserver.net/api.php?wsdl"); 
-	$response = $client->strPixels($string);
-	print_r($response);
-	echo "Success\n";
+ 
+$client = new SoapClient("https://my.interserver.net/api.php?wsdl");
+try { 
+  $response = $client->strPixels($string);
+  echo '$response = '.var_export($response, true)."\n";
  } catch (Exception $ex) {
-	echo "Exception Occured!\n";
-	echo "Code:{$ex->faultcode}\n";
-	echo "String:{$ex->faultstring}\n";
+  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
 }; 
 ?>

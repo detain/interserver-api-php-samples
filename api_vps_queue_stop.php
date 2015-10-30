@@ -5,45 +5,40 @@
 * @param id int defaults to false, if specifeid tries usign that di instead of the one passed
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$values['username'] = $_SERVER['argv'][0];
-$values['password'] = $_SERVER['argv'][1];
-$values['id'] = $_SERVER['argv'][2];
-$show_help = false;
-
+$username = $_SERVER['argv'][0];
+$password = $_SERVER['argv'][1];
+$id = $_SERVER['argv'][2];
+$show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-	$show_help = true;
-	break;
-}
-
+  $show_help = true;
+  break;
+} 
 if ($_SERVER['argc'] < 4)
-	$show_help = true;
+  $show_help = true;
 if ($show_help == true)
-	exit(<<<EOF
+  exit(<<<EOF
 api_vps_queue_stop
 
 stops a vps
 
 Correct Syntax: {$_SERVER["argv"][0]}  <username> <password> <id>
 
-	<username>  Your Login name with the site
-	<password>  Your password used to login with the site
-	<id>  Must be a int
+  <username>  Your Login name with the site
+  <password>  Your password used to login with the site
+  <id>  Must be a int
 
 EOF
 ); 
-
-try {
-	$client = new SoapClient("https://my.interserver.net/api.php?wsdl"); 
-	$sid = $client->api_login($values['username'], $values['password']);
-	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
-	echo "Got Session ID $sid\n";
-	$response = $client->api_vps_queue_stop($sid, $id);
-	print_r($response);
-	echo "Success\n";
+ 
+$client = new SoapClient("https://my.interserver.net/api.php?wsdl");
+try { 
+  $sid = $client->api_login($username, $password);
+  if (strlen($sid) == 0)
+    die("Got A Blank Sessoion");
+  $response = $client->api_vps_queue_stop($sid, $id);
+  echo '$response = '.var_export($response, true)."\n";
  } catch (Exception $ex) {
-	echo "Exception Occured!\n";
-	echo "Code:{$ex->faultcode}\n";
-	echo "String:{$ex->faultstring}\n";
+  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
 }; 
 ?>

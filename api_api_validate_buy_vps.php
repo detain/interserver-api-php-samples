@@ -16,30 +16,28 @@
 * @param rootpass string Desired Root Password (unused for windows, send a blank string)
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$values['username'] = $_SERVER['argv'][0];
-$values['password'] = $_SERVER['argv'][1];
-$values['os'] = $_SERVER['argv'][2];
-$values['slices'] = $_SERVER['argv'][3];
-$values['platform'] = $_SERVER['argv'][4];
-$values['controlpanel'] = $_SERVER['argv'][5];
-$values['period'] = $_SERVER['argv'][6];
-$values['location'] = $_SERVER['argv'][7];
-$values['version'] = $_SERVER['argv'][8];
-$values['hostname'] = $_SERVER['argv'][9];
-$values['coupon'] = $_SERVER['argv'][10];
-$values['rootpass'] = $_SERVER['argv'][11];
-$show_help = false;
-
+$username = $_SERVER['argv'][0];
+$password = $_SERVER['argv'][1];
+$os = $_SERVER['argv'][2];
+$slices = $_SERVER['argv'][3];
+$platform = $_SERVER['argv'][4];
+$controlpanel = $_SERVER['argv'][5];
+$period = $_SERVER['argv'][6];
+$location = $_SERVER['argv'][7];
+$version = $_SERVER['argv'][8];
+$hostname = $_SERVER['argv'][9];
+$coupon = $_SERVER['argv'][10];
+$rootpass = $_SERVER['argv'][11];
+$show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-	$show_help = true;
-	break;
-}
-
+  $show_help = true;
+  break;
+} 
 if ($_SERVER['argc'] < 13)
-	$show_help = true;
+  $show_help = true;
 if ($show_help == true)
-	exit(<<<EOF
+  exit(<<<EOF
 api_api_validate_buy_vps
 
 Checks if the parameters for your order pass validation and let you know if
@@ -48,33 +46,30 @@ Checks if the parameters for your order pass validation and let you know if
 
 Correct Syntax: {$_SERVER["argv"][0]}  <username> <password> <os> <slices> <platform> <controlpanel> <period> <location> <version> <hostname> <coupon> <rootpass>
 
-	<username>  Your Login name with the site
-	<password>  Your password used to login with the site
-	<os>  Must be a string
-	<slices>  Must be a int
-	<platform>  Must be a string
-	<controlpanel>  Must be a string
-	<period>  Must be a int
-	<location>  Must be a int
-	<version>  Must be a string
-	<hostname>  Must be a string
-	<coupon>  Must be a string
-	<rootpass>  Must be a string
+  <username>  Your Login name with the site
+  <password>  Your password used to login with the site
+  <os>  Must be a string
+  <slices>  Must be a int
+  <platform>  Must be a string
+  <controlpanel>  Must be a string
+  <period>  Must be a int
+  <location>  Must be a int
+  <version>  Must be a string
+  <hostname>  Must be a string
+  <coupon>  Must be a string
+  <rootpass>  Must be a string
 
 EOF
 ); 
-
-try {
-	$client = new SoapClient("https://my.interserver.net/api.php?wsdl"); 
-	$sid = $client->api_login($values['username'], $values['password']);
-	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
-	echo "Got Session ID $sid\n";
-	$response = $client->api_api_validate_buy_vps($sid, $os, $slices, $platform, $controlpanel, $period, $location, $version, $hostname, $coupon, $rootpass);
-	print_r($response);
-	echo "Success\n";
+ 
+$client = new SoapClient("https://my.interserver.net/api.php?wsdl");
+try { 
+  $sid = $client->api_login($username, $password);
+  if (strlen($sid) == 0)
+    die("Got A Blank Sessoion");
+  $response = $client->api_api_validate_buy_vps($sid, $os, $slices, $platform, $controlpanel, $period, $location, $version, $hostname, $coupon, $rootpass);
+  echo '$response = '.var_export($response, true)."\n";
  } catch (Exception $ex) {
-	echo "Exception Occured!\n";
-	echo "Code:{$ex->faultcode}\n";
-	echo "String:{$ex->faultstring}\n";
+  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
 }; 
 ?>

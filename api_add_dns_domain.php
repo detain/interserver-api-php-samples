@@ -8,22 +8,20 @@
 * @param ip string ip address to assign it to.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-$values['username'] = $_SERVER['argv'][0];
-$values['password'] = $_SERVER['argv'][1];
-$values['domain'] = $_SERVER['argv'][2];
-$values['ip'] = $_SERVER['argv'][3];
-$show_help = false;
-
+$username = $_SERVER['argv'][0];
+$password = $_SERVER['argv'][1];
+$domain = $_SERVER['argv'][2];
+$ip = $_SERVER['argv'][3];
+$show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-	$show_help = true;
-	break;
-}
-
+  $show_help = true;
+  break;
+} 
 if ($_SERVER['argc'] < 5)
-	$show_help = true;
+  $show_help = true;
 if ($show_help == true)
-	exit(<<<EOF
+  exit(<<<EOF
 api_add_dns_domain
 
 Adds a new domain into our system.  The status will be "ok" if it added, or
@@ -32,25 +30,22 @@ Adds a new domain into our system.  The status will be "ok" if it added, or
 
 Correct Syntax: {$_SERVER["argv"][0]}  <username> <password> <domain> <ip>
 
-	<username>  Your Login name with the site
-	<password>  Your password used to login with the site
-	<domain>  Must be a string
-	<ip>  Must be a string
+  <username>  Your Login name with the site
+  <password>  Your password used to login with the site
+  <domain>  Must be a string
+  <ip>  Must be a string
 
 EOF
 ); 
-
-try {
-	$client = new SoapClient("https://my.interserver.net/api.php?wsdl"); 
-	$sid = $client->api_login($values['username'], $values['password']);
-	if (strlen($sid)  == 0) die("Got A Blank Sessoion");
-	echo "Got Session ID $sid\n";
-	$response = $client->api_add_dns_domain($sid, $domain, $ip);
-	print_r($response);
-	echo "Success\n";
+ 
+$client = new SoapClient("https://my.interserver.net/api.php?wsdl");
+try { 
+  $sid = $client->api_login($username, $password);
+  if (strlen($sid) == 0)
+    die("Got A Blank Sessoion");
+  $response = $client->api_add_dns_domain($sid, $domain, $ip);
+  echo '$response = '.var_export($response, true)."\n";
  } catch (Exception $ex) {
-	echo "Exception Occured!\n";
-	echo "Code:{$ex->faultcode}\n";
-	echo "String:{$ex->faultstring}\n";
+  echo "Exception Occured!\nCode:{$ex->faultcode}\nString:{$ex->faultstring}\n";
 }; 
 ?>
