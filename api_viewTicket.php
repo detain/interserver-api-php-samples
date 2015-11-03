@@ -1,7 +1,7 @@
 <?php
 /** api_viewTicket  -  (c)2015 detain@interserver.net InterServer Hosting
 * View/Retrieve information about the given ticketID.
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param ticketID string the id of the ticket to retrieve. you can use [getTicketList](#getTicketList) to get a list of your tickets
 */
 ini_set("soap.wsdl_cache_enabled", "0");

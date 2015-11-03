@@ -1,7 +1,7 @@
 <?php
 /** api_cancel_license  -  (c)2015 detain@interserver.net InterServer Hosting
 * Cancel a License.
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param id int License Order ID
 */
 ini_set("soap.wsdl_cache_enabled", "0");

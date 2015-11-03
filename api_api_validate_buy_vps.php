@@ -3,7 +3,7 @@
 * Checks if the parameters for your order pass validation and let you know if
 * there are any errors. It will also give you information on the pricing
 * breakdown.
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param os string file field from [get_vps_templates](#get_vps_templates)
 * @param slices int 1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)
 * @param platform string platform field from the [get_vps_platforms_array](#get_vps_platforms_array)

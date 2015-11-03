@@ -1,7 +1,7 @@
 <?php
 /** api_buy_license  -  (c)2015 detain@interserver.net InterServer Hosting
 * Purchase a License.  Returns an invoice ID.
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param ip string ip address you wish to license some software on
 * @param type int the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.
 * @param coupon string an optional coupon

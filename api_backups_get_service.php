@@ -3,7 +3,7 @@
 * This Function Applies to the Backup Services services.
 * Gets service info for the given ID in the given Module.   An example of this
 * would be in the "vps" modulei have order id
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param id int service id, such as VPS ID
 */
 ini_set("soap.wsdl_cache_enabled", "0");

@@ -1,7 +1,7 @@
 <?php
 /** api_get_dns_domain  -  (c)2015 detain@interserver.net InterServer Hosting
 * Gets the DNS entry for a given Domain ID
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param domain_id int The ID of the domain in question.
 */
 ini_set("soap.wsdl_cache_enabled", "0");

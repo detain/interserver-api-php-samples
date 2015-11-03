@@ -3,7 +3,7 @@
 * Returns the IMA value.  This function tells you that I'm a client, or I'm a
 * admin. This is almost always going to return client, Adminsitrators will get an
 * admin response.
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $username = $_SERVER['argv'][1];

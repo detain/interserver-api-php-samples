@@ -1,7 +1,7 @@
 <?php
 /** api_delete_dns_record  -  (c)2015 detain@interserver.net InterServer Hosting
 * Deletes a single DNS record
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param domain_id int The ID of the domain in question.
 * @param record_id int The ID of the domains record to remove.
 */

@@ -2,7 +2,7 @@
 /** api_ticketPost  -  (c)2015 detain@interserver.net InterServer Hosting
 * This commands adds the content parameter as a response/reply to an existing
 * ticket specified by ticketID.
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param ticketID string the id of the ticket to add a response to. you can use [getTicketList](#getTicketList) to get a list of your tickets 
 * @param content string the message to add to the ticket
 */

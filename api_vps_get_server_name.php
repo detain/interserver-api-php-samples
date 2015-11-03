@@ -1,7 +1,7 @@
 <?php
 /** api_vps_get_server_name  -  (c)2015 detain@interserver.net InterServer Hosting
 * Get the name of the vps master/host server your giving the id for
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 * @param id int id of the vps master
 */
 ini_set("soap.wsdl_cache_enabled", "0");

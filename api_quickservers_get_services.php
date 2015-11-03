@@ -2,7 +2,7 @@
 /** api_quickservers_get_services  -  (c)2015 detain@interserver.net InterServer Hosting
 * This Function Applies to the QuickServers services.
 * Gets List of Services
-* @param sid string the *Session ID* you get from the [api_login](#api_login) call
+* @param sid string the *Session ID* you get from the [login](#login) call
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $username = $_SERVER['argv'][1];
