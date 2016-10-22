@@ -2,14 +2,15 @@
 /** api_change_license_ip_by_id  -  (c)2015 detain@interserver.net InterServer Hosting
 * Change the IP on an active license.
 * @param sid string the *Session ID* you get from the [login](#login) call
-* @param id int the license order id of the license to change the ip for
-* @param newip string the new ip address to associate with the license
+* @param id int the old ip address
+* @param newip string the new ip address
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $username = $_SERVER['argv'][1];
 $password = $_SERVER['argv'][2];
 $id = $_SERVER['argv'][3];
 $newip = $_SERVER['argv'][4];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

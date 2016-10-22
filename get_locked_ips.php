@@ -4,6 +4,7 @@
 * real use to anyone, butI use it to block IP addresses and similar things. 
 */
 ini_set("soap.wsdl_cache_enabled", "0");
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

@@ -4,7 +4,7 @@
 * @param sid string the *Session ID* you get from the [login](#login) call
 * @param page int page number of tickets to list
 * @param limit int how many tickets to show per page
-* @param status string null for no status limi t or limit to a speicifc status
+* @param status string null for no status limit or limit to a specific status
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $username = $_SERVER['argv'][1];
@@ -12,6 +12,7 @@ $password = $_SERVER['argv'][2];
 $page = $_SERVER['argv'][3];
 $limit = $_SERVER['argv'][4];
 $status = $_SERVER['argv'][5];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

@@ -1,6 +1,6 @@
 <?php
 /** api_openTicket  -  (c)2015 detain@interserver.net InterServer Hosting
-* This command creates a new ticket in our system.  
+* This command creates a new ticket in our system.
 * @param sid string the *Session ID* you get from the [login](#login) call
 * @param user_email string client email address
 * @param user_ip string client ip address
@@ -18,6 +18,7 @@ $subject = $_SERVER['argv'][5];
 $product = $_SERVER['argv'][6];
 $body = $_SERVER['argv'][7];
 $box_auth_value = $_SERVER['argv'][8];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
@@ -30,7 +31,7 @@ if ($show_help == true)
   exit(<<<EOF
 api_openTicket
 
-This command creates a new ticket in our system.  
+This command creates a new ticket in our system.
 
 Correct Syntax: {$_SERVER["argv"][0]}  <username> <password> <user_email> <user_ip> <subject> <product> <body> <box_auth_value>
 

@@ -7,7 +7,7 @@
 * @param os string file field from [get_vps_templates](#get_vps_templates)
 * @param slices int 1 to 16 specifying the scale of the VPS resources you want (a 3 slice has 3x the resources of a 1 slice vps)
 * @param platform string platform field from the [get_vps_platforms_array](#get_vps_platforms_array)
-* @param controlpanel string none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only availbale with CentOS
+* @param controlpanel string none, cpanel, or da for None, cPanel, or DirectAdmin control panel addons, only available with CentOS
 * @param period int 1-36, How frequently to be billed in months. Some discounts as given based on the period
 * @param location int id field from the [get_vps_locations_array](#get_vps_locations_array)
 * @param version string os field from [get_vps_templates](#get_vps_templates)
@@ -28,6 +28,7 @@ $version = $_SERVER['argv'][9];
 $hostname = $_SERVER['argv'][10];
 $coupon = $_SERVER['argv'][11];
 $rootpass = $_SERVER['argv'][12];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

@@ -2,11 +2,12 @@
 /** api_get_paypal_url  -  (c)2015 detain@interserver.net InterServer Hosting
 * Get the PayPal payment URL for an invoice on a given module.
 * @param module string the module the invoice is for. use [get_modules](#get_modules) to get a list of modules
-* @param invoice int the invoice id, or a comma seperated list of invoice ids to get a payment url for.  
+* @param invoice int the invoice id, or a comma separated list of invoice ids to get a payment url for.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $module = $_SERVER['argv'][1];
 $invoice = $_SERVER['argv'][2];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

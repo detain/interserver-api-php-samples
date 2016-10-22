@@ -5,6 +5,7 @@
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $ip = $_SERVER['argv'][1];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

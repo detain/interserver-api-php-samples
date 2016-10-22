@@ -10,6 +10,7 @@ $username = $_SERVER['argv'][1];
 $password = $_SERVER['argv'][2];
 $module = $_SERVER['argv'][3];
 $invoice = $_SERVER['argv'][4];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

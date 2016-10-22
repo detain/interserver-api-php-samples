@@ -20,6 +20,7 @@ $content = $_SERVER['argv'][6];
 $type = $_SERVER['argv'][7];
 $ttl = $_SERVER['argv'][8];
 $prio = $_SERVER['argv'][9];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

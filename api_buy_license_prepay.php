@@ -6,7 +6,7 @@
 * @param ip string ip address you wish to license some software on
 * @param type int the package id of the license type you want. use [get_license_types](#get-license-types) to get a list of possible types.
 * @param coupon string an optional coupon
-* @param use_prepay bool optional, wether or not to use a prepay, if specified as true will return an error if not enough prepay
+* @param use_prepay bool optional, whether or not to use a prepay, if specified as true will return an error if not enough prepay
 */
 ini_set("soap.wsdl_cache_enabled", "0");
 $username = $_SERVER['argv'][1];
@@ -15,6 +15,7 @@ $ip = $_SERVER['argv'][3];
 $type = $_SERVER['argv'][4];
 $coupon = $_SERVER['argv'][5];
 $use_prepay = $_SERVER['argv'][6];
+
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
