@@ -15,7 +15,7 @@ $show_help = false;
 if (in_array('--help', $_SERVER['argv']))
 {
   $show_help = true;
-  break;
+  //break;
 } 
 if ($_SERVER['argc'] < 5)
   $show_help = true;
@@ -42,7 +42,7 @@ try  {
   $res = $client->api_delete_dns_record($sid, $domain_id, $record_id);
   echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occured!\n";
+  echo "Exception Occurred!\n";
   echo "Code:{$ex->faultcode}\n";
   echo "String:{$ex->faultstring}\n";
 }; 

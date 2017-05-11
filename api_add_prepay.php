@@ -20,7 +20,7 @@ $show_help = false;
 if (in_array('--help', $_SERVER['argv']))
 {
   $show_help = true;
-  break;
+  //break;
 } 
 if ($_SERVER['argc'] < 6)
   $show_help = true;
@@ -51,7 +51,7 @@ try  {
   $res = $client->api_add_prepay($sid, $module, $amount, $automatic_use);
   echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occured!\n";
+  echo "Exception Occurred!\n";
   echo "Code:{$ex->faultcode}\n";
   echo "String:{$ex->faultstring}\n";
 }; 

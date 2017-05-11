@@ -25,7 +25,7 @@ $show_help = false;
 if (in_array('--help', $_SERVER['argv']))
 {
   $show_help = true;
-  break;
+  //break;
 } 
 if ($_SERVER['argc'] < 10)
   $show_help = true;
@@ -57,7 +57,7 @@ try  {
   $res = $client->api_update_dns_record($sid, $domain_id, $record_id, $name, $content, $type, $ttl, $prio);
   echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occured!\n";
+  echo "Exception Occurred!\n";
   echo "Code:{$ex->faultcode}\n";
   echo "String:{$ex->faultstring}\n";
 }; 
