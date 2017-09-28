@@ -34,7 +34,7 @@ $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
 try  { 
   $sid = $client->api_login($username, $password);
   if (strlen($sid) == 0)
-    die("Got A Blank Sessoion");
+    die("Got A Blank Session");
   $res = $client->api_licenses_get_client_invoices($sid);
   echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {

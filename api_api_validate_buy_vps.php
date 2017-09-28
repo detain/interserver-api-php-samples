@@ -66,7 +66,7 @@ $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
 try  { 
   $sid = $client->api_login($username, $password);
   if (strlen($sid) == 0)
-    die("Got A Blank Sessoion");
+    die("Got A Blank Session");
   $res = $client->api_api_validate_buy_vps($sid, $os, $slices, $platform, $controlpanel, $period, $location, $version, $hostname, $coupon, $rootpass);
   echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {

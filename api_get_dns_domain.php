@@ -35,7 +35,7 @@ $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
 try  { 
   $sid = $client->api_login($username, $password);
   if (strlen($sid) == 0)
-    die("Got A Blank Sessoion");
+    die("Got A Blank Session");
   $res = $client->api_get_dns_domain($sid, $domain_id);
   echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {

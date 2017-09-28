@@ -1,6 +1,6 @@
 <?php
-/** api_licenses_get_client_unpaid_invoices  -  (c)2015 detain@interserver.net InterServer Hosting
-* This Function Applies to the Licensing services.
+/** api_servers_get_client_unpaid_invoices  -  (c)2015 detain@interserver.net InterServer Hosting
+* This Function Applies to the Dedicated Servers services.
 * This function returns a list of all the unpaid invoices matching the module
 * passed..
 * @param sid string the *Session ID* you get from the [login](#login) call
@@ -19,9 +19,9 @@ if ($_SERVER['argc'] < 3)
   $show_help = true;
 if ($show_help == true)
   exit(<<<EOF
-api_licenses_get_client_unpaid_invoices
+api_servers_get_client_unpaid_invoices
 
-This Function Applies to the Licensing services.
+This Function Applies to the Dedicated Servers services.
 * This function returns a list of all the unpaid invoices matching the module
 * passed..
 
@@ -37,7 +37,7 @@ try  {
   $sid = $client->api_login($username, $password);
   if (strlen($sid) == 0)
     die("Got A Blank Session");
-  $res = $client->api_licenses_get_client_unpaid_invoices($sid);
+  $res = $client->api_servers_get_client_unpaid_invoices($sid);
   echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
   echo "Exception Occurred!\n";
