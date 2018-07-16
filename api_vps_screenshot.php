@@ -9,7 +9,6 @@ ini_set("soap.wsdl_cache_enabled", "0");
 $username = $_SERVER['argv'][1];
 $password = $_SERVER['argv'][2];
 $id = $_SERVER['argv'][3];
-
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

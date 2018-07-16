@@ -3,7 +3,6 @@
 * Returns a list of all the modules available.
 */
 ini_set("soap.wsdl_cache_enabled", "0");
-
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

@@ -15,7 +15,6 @@ $ip = $_SERVER['argv'][3];
 $type = $_SERVER['argv'][4];
 $coupon = $_SERVER['argv'][5];
 $use_prepay = $_SERVER['argv'][6];
-
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

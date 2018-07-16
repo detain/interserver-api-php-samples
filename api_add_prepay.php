@@ -15,7 +15,6 @@ $password = $_SERVER['argv'][2];
 $module = $_SERVER['argv'][3];
 $amount = $_SERVER['argv'][4];
 $automatic_use = $_SERVER['argv'][5];
-
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

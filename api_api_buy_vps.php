@@ -28,7 +28,6 @@ $version = $_SERVER['argv'][9];
 $hostname = $_SERVER['argv'][10];
 $coupon = $_SERVER['argv'][11];
 $rootpass = $_SERVER['argv'][12];
-
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {

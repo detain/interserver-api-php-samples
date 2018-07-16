@@ -10,7 +10,6 @@ $username = $_SERVER['argv'][1];
 $password = $_SERVER['argv'][2];
 $oldip = $_SERVER['argv'][3];
 $newip = $_SERVER['argv'][4];
-
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
