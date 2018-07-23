@@ -1,6 +1,6 @@
 <?php
 /** api_quickservers_cancel_service  -  (c)2015 detain@interserver.net InterServer Hosting
-* This Function Applies to the QuickServers services.
+* This Function Applies to the Rapid Deploy Servers services.
 * Cancels a service for the passed module matching the passed id.  Canceling a
 * service will also cancel any addons for that service at the same time.
 * @param sid string the *Session ID* you get from the [login](#login) call
@@ -22,7 +22,7 @@ if ($show_help == true)
   exit(<<<EOF
 api_quickservers_cancel_service
 
-This Function Applies to the QuickServers services.
+This Function Applies to the Rapid Deploy Servers services.
 * Cancels a service for the passed module matching the passed id.  Canceling a
 * service will also cancel any addons for that service at the same time.
 

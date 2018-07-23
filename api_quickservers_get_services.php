@@ -1,6 +1,6 @@
 <?php
 /** api_quickservers_get_services  -  (c)2015 detain@interserver.net InterServer Hosting
-* This Function Applies to the QuickServers services.
+* This Function Applies to the Rapid Deploy Servers services.
 * Gets List of Services
 * @param sid string the *Session ID* you get from the [login](#login) call
 */
@@ -19,7 +19,7 @@ if ($show_help == true)
   exit(<<<EOF
 api_quickservers_get_services
 
-This Function Applies to the QuickServers services.
+This Function Applies to the Rapid Deploy Servers services.
 * Gets List of Services
 
 Correct Syntax: {$_SERVER["argv"][0]}  <username> <password>

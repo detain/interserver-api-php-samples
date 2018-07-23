@@ -1,6 +1,6 @@
 <?php
 /** api_quickservers_get_client_unpaid_invoices  -  (c)2015 detain@interserver.net InterServer Hosting
-* This Function Applies to the QuickServers services.
+* This Function Applies to the Rapid Deploy Servers services.
 * This function returns a list of all the unpaid invoices matching the module
 * passed..
 * @param sid string the *Session ID* you get from the [login](#login) call
@@ -20,7 +20,7 @@ if ($show_help == true)
   exit(<<<EOF
 api_quickservers_get_client_unpaid_invoices
 
-This Function Applies to the QuickServers services.
+This Function Applies to the Rapid Deploy Servers services.
 * This function returns a list of all the unpaid invoices matching the module
 * passed..
 
