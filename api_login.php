@@ -11,13 +11,13 @@ $password = $_SERVER['argv'][2];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-  $show_help = true;
-  //break;
+	$show_help = true;
+	//break;
 } 
 if ($_SERVER['argc'] < 3)
-  $show_help = true;
+	$show_help = true;
 if ($show_help == true)
-  exit(<<<EOF
+	exit(<<<EOF
 api_login
 
 This function creates a session in our system which you will need to pass to
@@ -32,11 +32,11 @@ EOF
 ); 
 $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
 try  { 
-  $res = $client->api_login($username, $password);
-  echo '$res = '.var_export($res, true)."\n";
+	$res = $client->api_login($username, $password);
+	echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occurred!\n";
-  echo "Code:{$ex->faultcode}\n";
-  echo "String:{$ex->faultstring}\n";
+	echo "Exception Occurred!\n";
+	echo "Code:{$ex->faultcode}\n";
+	echo "String:{$ex->faultstring}\n";
 }; 
 ?>

@@ -21,13 +21,13 @@ $box_auth_value = $_SERVER['argv'][8];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-  $show_help = true;
-  //break;
+	$show_help = true;
+	//break;
 } 
 if ($_SERVER['argc'] < 9)
-  $show_help = true;
+	$show_help = true;
 if ($show_help == true)
-  exit(<<<EOF
+	exit(<<<EOF
 api_openTicket
 
 This command creates a new ticket in our system.
@@ -47,14 +47,14 @@ EOF
 ); 
 $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
 try  { 
-  $sid = $client->api_login($username, $password);
-  if (strlen($sid) == 0)
-    die("Got A Blank Session");
-  $res = $client->api_openTicket($sid, $user_email, $user_ip, $subject, $product, $body, $box_auth_value);
-  echo '$res = '.var_export($res, true)."\n";
+	$sid = $client->api_login($username, $password);
+	if (strlen($sid) == 0)
+		die("Got A Blank Session");
+	$res = $client->api_openTicket($sid, $user_email, $user_ip, $subject, $product, $body, $box_auth_value);
+	echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occurred!\n";
-  echo "Code:{$ex->faultcode}\n";
-  echo "String:{$ex->faultstring}\n";
+	echo "Exception Occurred!\n";
+	echo "Code:{$ex->faultcode}\n";
+	echo "String:{$ex->faultstring}\n";
 }; 
 ?>

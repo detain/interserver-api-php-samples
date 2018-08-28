@@ -7,13 +7,13 @@ ini_set("soap.wsdl_cache_enabled", "0");
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-  $show_help = true;
-  //break;
+	$show_help = true;
+	//break;
 } 
 if ($_SERVER['argc'] < 1)
-  $show_help = true;
+	$show_help = true;
 if ($show_help == true)
-  exit(<<<EOF
+	exit(<<<EOF
 get_locked_ips
 
 This will return a list of all IP addresses used for fraud.   Its probably of no
@@ -26,11 +26,11 @@ EOF
 ); 
 $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
 try  { 
-  $res = $client->get_locked_ips();
-  echo '$res = '.var_export($res, true)."\n";
+	$res = $client->get_locked_ips();
+	echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occurred!\n";
-  echo "Code:{$ex->faultcode}\n";
-  echo "String:{$ex->faultstring}\n";
+	echo "Exception Occurred!\n";
+	echo "Code:{$ex->faultcode}\n";
+	echo "String:{$ex->faultstring}\n";
 }; 
 ?>

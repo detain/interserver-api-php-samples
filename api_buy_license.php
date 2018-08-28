@@ -15,13 +15,13 @@ $coupon = $_SERVER['argv'][5];
 $show_help = false; 
 if (in_array('--help', $_SERVER['argv']))
 {
-  $show_help = true;
-  //break;
+	$show_help = true;
+	//break;
 } 
 if ($_SERVER['argc'] < 6)
-  $show_help = true;
+	$show_help = true;
 if ($show_help == true)
-  exit(<<<EOF
+	exit(<<<EOF
 api_buy_license
 
 Purchase a License.  Returns an invoice ID.
@@ -38,14 +38,14 @@ EOF
 ); 
 $client = new SoapClient("https://my.interserver.net/api.php?wsdl");
 try  { 
-  $sid = $client->api_login($username, $password);
-  if (strlen($sid) == 0)
-    die("Got A Blank Session");
-  $res = $client->api_buy_license($sid, $ip, $type, $coupon);
-  echo '$res = '.var_export($res, true)."\n";
+	$sid = $client->api_login($username, $password);
+	if (strlen($sid) == 0)
+		die("Got A Blank Session");
+	$res = $client->api_buy_license($sid, $ip, $type, $coupon);
+	echo '$res = '.var_export($res, true)."\n";
  } catch (Exception $ex) {
-  echo "Exception Occurred!\n";
-  echo "Code:{$ex->faultcode}\n";
-  echo "String:{$ex->faultstring}\n";
+	echo "Exception Occurred!\n";
+	echo "Code:{$ex->faultcode}\n";
+	echo "String:{$ex->faultstring}\n";
 }; 
 ?>
